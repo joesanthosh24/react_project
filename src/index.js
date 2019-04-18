@@ -6,6 +6,7 @@ import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 import "./styles.css";
 import Books from "./components/books";
 import Movies from "./components/movies";
+import Library from "./components/library";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
       <Switch>
         <Route path="/books" component={Books} />
         <Route path="/movies" component={Movies} />
+        <Route path="/library" component={Library} />
         <Redirect from="/" to="/books" />
       </Switch>
     </React.Fragment>
