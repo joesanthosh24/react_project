@@ -1,43 +1,64 @@
 import React, { Component } from "react";
-import Pagination from "./common/pagination";
 import { getBooks } from "../services/booksInfo";
+import { MDBDataTable, MDBBtn } from "mdbreact";
 
 class Books extends Component {
   state = {
     books: getBooks(),
-    pageSize: 3
+    pageSize: 3,
+    currentPage: 1
   };
 
-  handlePageChange() {}
+  componentDidMount() {
+    this.setState({ books: getBooks() });
+  }
+
+  handlePageChange = page => {
+    this.setState({ currentPage: page });
+  };
 
   render() {
     const { books, pageSize } = this.state;
+    books.map(book => {
+      book["button"] = (
+        <MDBBtn color="red" size="sm">
+          Button
+        </MDBBtn>
+      );
+    });
+    const tableData = {
+      columns: [
+        {
+          label: "ID",
+          field: "id",
+          sort: "asc",
+          width: 80
+        },
+        {
+          label: "Title",
+          field: "title",
+          sort: "asc",
+          width: 400
+        },
+        {
+          label: "Author",
+          field: "author",
+          sort: "asc",
+          width: 100
+        },
+        {
+          label: "Genre",
+          field: "genre",
+          sort: "asc",
+          width: 120
+        }
+      ],
+      rows: books
+    };
 
     return (
       <div className="container">
-        <table className="table">
-          <thead>
-            <tr>
-              <th scope="column">Title</th>
-              <th scope="column">Genre</th>
-              <th scope="column">Author</th>
-            </tr>
-          </thead>
-          <tbody>
-            {books.map(book => (
-              <tr key={book.id}>
-                <td scope="row">{book.title}</td>
-                <td scope="row">{book.genre}</td>
-                <td scope="row">{book.author}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-        <Pagination
-          numItems={books.length}
-          pageSize={pageSize}
-          onPageChange={this.handlePageChange}
-        />
+        <MDBDataTable striped bordered small data={tableData} />
       </div>
     );
   }
