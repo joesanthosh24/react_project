@@ -52,6 +52,18 @@ const books = [
     title: "Genki: An integrated Course in Japanese",
     author: "Eri Banno",
     genre: "Information"
+  },
+  {
+    id: 10,
+    title: "Romeo and Juliet",
+    author: "Shakespeare",
+    genre: "Shakespearan Fiction"
+  },
+  {
+    id: 11,
+    title: "To Kill a MockingBird",
+    author: "Harper Lee",
+    genre: "Fiction"
   }
 ];
 

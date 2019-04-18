@@ -1,24 +1,13 @@
 import React, { Component } from "react";
-import { getBooks } from "../services/booksInfo";
 import { MDBDataTable } from "mdbreact";
+import { getMovies } from "../services/moviesInfo";
 
-class Books extends Component {
+class Movies extends Component {
   state = {
-    books: getBooks(),
-    pageSize: 3,
-    currentPage: 1
+    movies: getMovies()
   };
-
-  componentDidMount() {
-    this.setState({ books: getBooks() });
-  }
-
-  handlePageChange = page => {
-    this.setState({ currentPage: page });
-  };
-
   render() {
-    const { books, pageSize } = this.state;
+    const { movies } = this.state;
     const tableData = {
       columns: [
         {
@@ -34,28 +23,21 @@ class Books extends Component {
           width: 400
         },
         {
-          label: "Author",
-          field: "author",
-          sort: "asc",
-          width: 100
-        },
-        {
           label: "Genre",
           field: "genre",
           sort: "asc",
           width: 120
         }
       ],
-      rows: books
+      rows: movies
     };
-
     return (
       <div className="container">
-        <h1>Books</h1>
+        <h1>Movies</h1>
         <MDBDataTable striped bordered small data={tableData} />
       </div>
     );
   }
 }
 
-export default Books;
+export default Movies;
