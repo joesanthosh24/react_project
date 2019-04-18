@@ -16,7 +16,7 @@ function App() {
         <Route path="/books" component={Books} />
         <Route path="/movies" component={Movies} />
         <Route path="/library" component={Library} />
-        <Redirect from="/" to="/books" />
+        <Redirect from="/" to="/library" />
       </Switch>
     </React.Fragment>
   );
