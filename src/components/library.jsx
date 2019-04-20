@@ -24,7 +24,9 @@ const Library = props => {
             <p className="card-text">
               Information on Books stored inside the library
             </p>
-            <a className="btn btn-primary">Go to Books</a>
+            <Link className="btn btn-primary" to="/books">
+              Go to Books
+            </Link>
           </div>
         </div>
       </div>
@@ -44,7 +46,9 @@ const Library = props => {
             <p className="card-text">
               Information on Movies stored in the library
             </p>
-            <a className="btn btn-primary">Go to Movies</a>
+            <Link className="btn btn-primary" to="/movies">
+              Go to Movies
+            </Link>
           </div>
         </div>
       </div>
